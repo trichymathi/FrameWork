@@ -21,7 +21,6 @@ public class Step_Define {
 	@Then("User launches the Url {string} in the browser")
 	public void userLaunchesTheUrlInTheBrowser(String string) throws IOException {
 		methods.launchUrl(string);
-		methods.screenShot("Launch Url");
 	}
 	
 	@And("^User clicks on the \"(.*)\" mobile in the screen$")

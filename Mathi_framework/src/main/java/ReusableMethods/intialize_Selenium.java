@@ -5,17 +5,31 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class intialize_Selenium {
 	
 	public static WebDriver driver;
+	
+	public intialize_Selenium(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
+	
+//	@FindBy(xpath="//div") WebElement element;
+	
+	
+	@SuppressWarnings("deprecation")
 	public void intializeDriver() throws IOException {
 		Properties config = new Properties();
 		String configFilePath = System.getProperty("user.dir")+"\\PropertyFiles\\Config.properties";
@@ -29,6 +43,7 @@ public class intialize_Selenium {
 			System.setProperty("webdriver.chrome.driver", driverPath);
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
+			options.addArguments("--headless");
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -52,6 +67,8 @@ public class intialize_Selenium {
 			default : System.out.println("No driver Name Not Matched");
 		}
 		
+		
 	}
+	
 
 }

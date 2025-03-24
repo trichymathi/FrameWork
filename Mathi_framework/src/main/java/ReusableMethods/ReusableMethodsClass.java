@@ -30,9 +30,11 @@ import com.aventstack.extentreports.reporter.ExtentReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.google.common.io.Files;
 
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
+
 public class ReusableMethodsClass {
 	WebDriver driver;
-	
 	public void intializeDriver() throws IOException {
 		try {
 		Properties config = new Properties();
@@ -42,11 +44,17 @@ public class ReusableMethodsClass {
 		file.close();
 		String driverName = config.getProperty("driver.name");
 		String driverPath =config.getProperty("driver.Path");
+		String mode =config.getProperty("running.Mode");
 		switch(driverName) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", driverPath);
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--disable-notifications");
+			if(mode.equalsIgnoreCase("headless")) {
+			 options.addArguments("--headless");
+			 options.addArguments("--disable-notifications");
+			}else {
+				options.addArguments("--disable-notifications");
+			}
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
