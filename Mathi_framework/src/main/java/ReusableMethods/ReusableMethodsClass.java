@@ -101,8 +101,8 @@ public class ReusableMethodsClass {
 		try {
 		WebElement element = driver.findElement(By.xpath(xpath));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.visibilityOf(element));
-		element.click();
+		WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
+		until.click();
 		}catch(Exception e) {
 		System.err.println("Element Unable To Click");
 		NoSuchElementException exception=new NoSuchElementException("Element Not Found");

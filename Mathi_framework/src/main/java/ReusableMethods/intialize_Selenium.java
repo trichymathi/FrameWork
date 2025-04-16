@@ -27,7 +27,8 @@ public class intialize_Selenium {
 	}
 	
 //	@FindBy(xpath="//div") WebElement element;
-	
+//	By username = By.xpath("//div");
+
 	
 	@SuppressWarnings("deprecation")
 	public void intializeDriver() throws IOException {
