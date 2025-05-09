@@ -1,3 +1,4 @@
+
 package ReusableMethods;
 
 import java.io.FileInputStream;
@@ -19,16 +20,27 @@ import org.openqa.selenium.support.PageFactory;
 
 public class intialize_Selenium {
 	
-	public static WebDriver driver;
+	 WebDriver driver;
 	
-	public intialize_Selenium(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
-	}
+//	public intialize_Selenium(WebDriver driver) {
+//		this.driver=driver;
+//	}
+//    By username = By.xpath("//div");	
+//	
+//    public void userNameEnter() {
+//		driver.findElement(username).click();
+//	}
+    
+//	public intialize_Selenium(WebDriver driver) {
+//		this.driver=driver;
+//		PageFactory.initElements(driver,this);
+//	}
+//	
+//	@FindBy(xpath="//div") WebElement element;	
+//	public void loginPage() {
+//		element.click();
+//	}
 	
-//	@FindBy(xpath="//div") WebElement element;
-//	By username = By.xpath("//div");
-
 	
 	@SuppressWarnings("deprecation")
 	public void intializeDriver() throws IOException {
@@ -70,6 +82,8 @@ public class intialize_Selenium {
 		
 		
 	}
+
+
 	
 
 }

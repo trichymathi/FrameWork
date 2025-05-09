@@ -103,11 +103,9 @@ public class ReusableMethodsClass {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
 		until.click();
-		}catch(Exception e) {
+		}catch(NoSuchElementException e) {
 		System.err.println("Element Unable To Click");
-		NoSuchElementException exception=new NoSuchElementException("Element Not Found");
-		exception.getMessage();
-		e.printStackTrace();
+		e.getMessage();
 		}
 	}
 	
