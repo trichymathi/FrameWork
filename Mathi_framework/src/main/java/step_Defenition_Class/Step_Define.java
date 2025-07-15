@@ -15,7 +15,7 @@ public class Step_Define {
 
 	@Given("^The User login into the Webpage$")
 	public void the_user_login_into_the_webpage() throws IOException {
-		methods.intializeDriver();
+		methods.launchBrowser();
 	}
 	
 	@Then("User launches the Url {string} in the browser")

@@ -22,6 +22,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -35,63 +36,35 @@ import io.cucumber.java.BeforeStep;
 
 public class ReusableMethodsClass {
 	WebDriver driver;
-	public void intializeDriver() throws IOException {
+	
+	public void launchBrowser()   {
+		BrowserDriverFactory browserDriverFactory = new BrowserDriverFactory();
 		try {
-		Properties config = new Properties();
-		String configFilePath = System.getProperty("user.dir")+"\\PropertyFiles\\Config.properties";
-		FileInputStream file = new FileInputStream(configFilePath);
-		config.load(file);
-		file.close();
-		String driverName = config.getProperty("driver.name");
-		String driverPath =config.getProperty("driver.Path");
-		String mode =config.getProperty("running.Mode");
-		switch(driverName) {
-		case "chrome":
-			System.setProperty("webdriver.chrome.driver", driverPath);
-			ChromeOptions options = new ChromeOptions();
-			if(mode.equalsIgnoreCase("headless")) {
-			 options.addArguments("--headless");
-			 options.addArguments("--disable-notifications");
-			}else {
-				options.addArguments("--disable-notifications");
-			}
-			driver = new ChromeDriver(options);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-			break;
-		case "edge" :
-			System.setProperty("webdriver.edge.driver", driverPath);
-			EdgeOptions edgeOptions = new EdgeOptions();
-			edgeOptions.addArguments("--disable-notifications");
-			driver = new EdgeDriver(edgeOptions);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-			break;
-		case "firefox" :
-			System.setProperty("webdriver.gecko.driver", driverPath);
-			FirefoxOptions firFoxOptions = new FirefoxOptions();
-			firFoxOptions.addArguments("--disable-notifications");
-			driver = new FirefoxDriver(firFoxOptions);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-			break;
-			default : System.out.println("No driver Name Not Matched");
+			driver=browserDriverFactory.intializeDriver();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		}catch(Exception e) {
-			System.out.println("Check Your Internet Connection");
-		}
-		
 	}
 	
 	public void launchUrl(String url) {
 		driver.get(url);
 	}
 	
+	protected WebElement locatorFind(By locator) {
+		return driver.findElement(locator);
+	}
+	
+	protected WebElement find(By locator) {
+		WebElement element = locatorFind(locator);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
+		return until;
+	}
+	
 	public void screenShot(String name) throws IOException {
 		ExtentSparkReporter Reporter = new ExtentSparkReporter("Report.html");
 		ExtentReports extent =new ExtentReports();
 		extent.attachReporter(Reporter);
-//		extent.createTest("Web Application").info(name).addSc
 		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		Files.copy(screenshot, new File(name+".png"));
 		extent.flush();
@@ -99,10 +72,8 @@ public class ReusableMethodsClass {
 
 	public void clickOnElement(String xpath) {
 		try {
-		WebElement element = driver.findElement(By.xpath(xpath));
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
-		until.click();
+		WebElement elementToClick = find(By.xpath(xpath));
+		elementToClick.click();
 		}catch(NoSuchElementException e) {
 		System.err.println("Element Unable To Click");
 		e.getMessage();
@@ -111,9 +82,7 @@ public class ReusableMethodsClass {
 	
 	public void typeInElement(String xpath,String typeValue,boolean clearCondition) {
 		try {
-			WebElement element = driver.findElement(By.xpath(xpath));
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-			wait.until(ExpectedConditions.visibilityOf(element));
+			WebElement element = find(By.xpath(xpath));
 		if(clearCondition == true) {
 			element.clear();
 		}
@@ -132,9 +101,9 @@ public class ReusableMethodsClass {
 	}
 	
 	public String getText(String xpath) {
-		WebElement element = driver.findElement(By.xpath(xpath));
-		String getText=element.getText();
-		return getText;
+		WebElement element = find(By.xpath(xpath));
+		return element.getText();
+		
 	}
 	
 	public void waitUntillElementVisible(String xpath,long timouts) {
