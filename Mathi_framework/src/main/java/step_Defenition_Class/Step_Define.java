@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 
 import ReusableMethods.ReusableMethodsClass;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +13,9 @@ import io.cucumber.java.en.Then;
 public class Step_Define {
 	
 	ReusableMethodsClass methods = new ReusableMethodsClass();
-
+	
+	
+    
 	@Given("^The User login into the Webpage$")
 	public void the_user_login_into_the_webpage() throws IOException {
 		methods.launchBrowser();

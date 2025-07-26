@@ -30,6 +30,7 @@ public class BrowserDriverFactory {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", driverPath);
 			ChromeOptions options = new ChromeOptions();
+//			options.addArguments("--incognito");
 			if(mode.equalsIgnoreCase("headless")) {
 			 options.addArguments("--headless");
 			 options.addArguments("--disable-notifications");

@@ -1,79 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-14T17:31:26 IST" name="Default suite" finished-at="2025-07-14T17:31:47 IST" duration-ms="20910">
+  <suite started-at="2025-07-26T13:14:13 IST" name="Suite" finished-at="2025-07-26T13:14:13 IST" duration-ms="9">
     <groups>
-      <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:main_Class.Runner@5e5d171f]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
-      </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-07-14T17:31:26 IST" name="Default test" finished-at="2025-07-14T17:31:47 IST" duration-ms="20910">
-      <class name="main_Class.Runner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:main_Class.Runner@5e5d171f]" started-at="2025-07-14T17:31:26 IST" name="setUpClass" finished-at="2025-07-14T17:31:26 IST" duration-ms="106" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[org.testng.TestRunner@c2cf597]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:main_Class.Runner@5e5d171f]" started-at="2025-07-14T17:31:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-07-14T17:31:34 IST" duration-ms="8401" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:main_Class.Runner@5e5d171f]" started-at="2025-07-14T17:31:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-07-14T17:31:41 IST" duration-ms="6784" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:main_Class.Runner@5e5d171f]" started-at="2025-07-14T17:31:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-07-14T17:31:47 IST" duration-ms="5589" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Login Scenarios"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:main_Class.Runner@5e5d171f]" started-at="2025-07-14T17:31:47 IST" name="tearDownClass" finished-at="2025-07-14T17:31:47 IST" duration-ms="2" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownClass -->
-      </class> <!-- main_Class.Runner -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    <test started-at="2025-07-26T13:14:13 IST" name="Test" finished-at="2025-07-26T13:14:13 IST" duration-ms="9">
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

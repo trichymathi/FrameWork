@@ -4,11 +4,18 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.CucumberOptions.SnippetType;
 
-@CucumberOptions(features = {
-		"src/main/resources/Feature_Files" }, dryRun = false, snippets = SnippetType.CAMELCASE, monochrome = true, glue = "step_Defenition_Class"
-//				,tags="@regression"
+//@CucumberOptions(features = {
+//		"src/main/resources/Feature_Files" }, dryRun = false, snippets = SnippetType.CAMELCASE, monochrome = true, glue = "step_Defenition_Class"
+////				,tags="@regression"
+//
+//)
+//public class Runner extends AbstractTestNGCucumberTests {
+//
+//}
 
-)
-public class Runner extends AbstractTestNGCucumberTests {
+@CucumberOptions(features = "src/main/resources/Feature_Files",dryRun = false,glue = "step_Defenition_Class",snippets = SnippetType.CAMELCASE,monochrome = true,
+tags="@regression")
 
+public class Runner extends AbstractTestNGCucumberTests{
+	
 }
